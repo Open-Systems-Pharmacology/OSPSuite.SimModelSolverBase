@@ -51,9 +51,10 @@ class SimModelSolverBase
 	public:
 		enum STEP_MODE
 		{
-         SINGLE,
-         NORMAL
+			SINGLE,
+			NORMAL
 		};
+
 		SIMMODELSOLVER_EXPORT SimModelSolverBase (ISolverCaller * pSolverCaller, int problemSize, int numberOfSensitivityParameters);
 		SIMMODELSOLVER_EXPORT virtual ~SimModelSolverBase ();
 		SIMMODELSOLVER_EXPORT ISolverCaller * GetSolverCaller ();

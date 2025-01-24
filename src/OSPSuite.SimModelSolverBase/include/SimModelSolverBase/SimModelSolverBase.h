@@ -49,6 +49,12 @@ class SimModelSolverBase
 		int _delaysSize;
 	
 	public:
+		enum STEP_MODE
+		{
+			SINGLE,
+			NORMAL
+		};
+
 		SIMMODELSOLVER_EXPORT SimModelSolverBase (ISolverCaller * pSolverCaller, int problemSize, int numberOfSensitivityParameters);
 		SIMMODELSOLVER_EXPORT virtual ~SimModelSolverBase ();
 		SIMMODELSOLVER_EXPORT ISolverCaller * GetSolverCaller ();
@@ -80,7 +86,7 @@ class SimModelSolverBase
 		// - positive value if a recoverable error occurred (e.g. max. no. of internal solver steps reached)
 		// - negative value if an unrecoverable error occurred (e.g. illegal input)
 		//-----------------------------------------------------------------------------------------------------
-		SIMMODELSOLVER_EXPORT virtual int PerformSolverStep (double tout, double * y, double ** yS, double & tret) = 0;
+		SIMMODELSOLVER_EXPORT virtual int PerformSolverStep (double tout, double * y, double ** yS, double & tret, STEP_MODE step_mode) = 0;
 		
 		//-----------------------------------------------------------------------------------------------------
 		//Reinitialize DE system (e.g. in case of bigger discontinuities). New relative / absolute tolerance should be set by caller prior to ReInit (if required)
